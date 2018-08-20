@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.jsong.example.spring</groupId>
+		<artifactId>spring-example</artifactId>
+		<version>${revision}</version>
+	</parent>
+	
+	<artifactId>eureka-example</artifactId>
+	
+	<name>eureka-example</name>
+	<url>http://maven.apache.org</url>
+	
+	<dependencies>
+    		<!-- spring boot cloud start -->
+    		<!--表示为web工程-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--暴露各种指标-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-eureka</artifactId>
+	    </dependency>
+	    <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+		<!-- spring boot cloud end -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>springloaded</artifactId>
+						<version>1.2.6.RELEASE</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
