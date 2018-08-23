@@ -12,7 +12,7 @@ public class BaseController {
 	
 	protected void bindingResult(BindingResult bindingResult, String methodName) {
         if (bindingResult.hasErrors()) {
-        		LOGGER.info(">>>>>> {}.{}() valid params is error msg = {}", this.getClass().getSimpleName(), methodName,
+        		LOGGER.info("[{}.{}() valid params is error] >>> msg = {}", this.getClass().getSimpleName(), methodName,
                     bindingResult.getFieldError().getDefaultMessage());
             throw new ExampleException("1030000", bindingResult.getFieldError().getDefaultMessage());
         }

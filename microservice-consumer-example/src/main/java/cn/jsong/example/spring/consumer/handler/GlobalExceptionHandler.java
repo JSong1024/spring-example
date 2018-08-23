@@ -28,10 +28,10 @@ public class GlobalExceptionHandler {
 
 		if (e instanceof ExampleException) {
 			ExampleException ex = (ExampleException) e;
-			LOGGER.error("[全局异常处理]: retCode=[{}], retMsg=[{}]", ex.getErrorCodeStr(), ex.getMessage());
+			LOGGER.error("[全局异常处理] >>> retCode=[{}], retMsg=[{}]", ex.getErrorCodeStr(), ex.getMessage());
 			return ResultUtils.error(ex.getErrorCodeStr(), ex.getMessage());
 		}
-		LOGGER.info("[全局异常处理]: unknown exception ={}", e);
+		LOGGER.info("[全局异常处理] >>> unknown exception ={}", e);
 		String message = e.getMessage();
         String exceptionName = e.getClass() == null ? null : e.getClass().getSimpleName();
         String resultMessage = exceptionName == null ? "[" + message+ "]" : exceptionName + "[" + message + "]"; 

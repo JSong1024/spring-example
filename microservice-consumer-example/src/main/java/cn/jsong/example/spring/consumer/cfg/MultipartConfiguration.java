@@ -42,10 +42,10 @@ public class MultipartConfiguration {
 				Files.createDirectory(tmpPath);
 			} catch (IOException e) {
 				tmpPathStr = "/tmp";
-				LOGGER.error(">>>>>>>>>>[文件上传临时目录配置]-异常：tmpPath=[{}], e=[]", tmpPathStr, e.getMessage());
+				LOGGER.error("[文件上传临时目录配置][异常] >>> tmpPath=[{}], e=[]", tmpPathStr, e.getMessage());
 			}
 		}
-		LOGGER.info(">>>>>>>>>>[文件上传临时目录配置]：tmpPath=[{}]", tmpPathStr);
+		LOGGER.info("[文件上传临时目录配置] >>> tmpPath=[{}]", tmpPathStr);
 		MultipartConfigFactory factory = new MultipartConfigFactory();
 		factory.setLocation(tmpPathStr);
 		return factory.createMultipartConfig();

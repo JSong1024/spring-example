@@ -19,12 +19,12 @@ public class HystrixFallBackUtils {
 	private final static Logger LOGGER = LoggerFactory.getLogger(HystrixFallBackUtils.class);
 
 	public static <T> Result<T> fallBackResult(String method, Throwable e) {
-		LOGGER.info(">>>>>> {}: 触发服务降级", method);
+		LOGGER.info("[{}] >>> 触发服务降级", method);
 		if (e instanceof ExampleException) {
 			ExampleException ex = (ExampleException) e;
 			return ResultUtils.error(ex.getErrorCodeStr(), ex.getMessage());
 		}
-		LOGGER.info(">>>>>> {}: 触发服务降级，断容器开启", method);
+		LOGGER.info("[{}] >>> 触发服务降级，断容器开启", method);
 
 		return ResultUtils.error("0000001", "[" + method + "]服务不可用");
 	}

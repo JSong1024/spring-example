@@ -30,7 +30,7 @@ public class JsonUtils {
 		try {
 			parseObject = JSON.parseObject(jsonStr, typeClazz);
 		} catch (Exception e) {
-			LOGGER.error("return parse result field exception = {}", e);
+			LOGGER.error("[return parse result field] >>> exception = {}", e);
 			throw new ExampleException("1010001", "parse json to Object exception");
 		}
 		return parseObject;

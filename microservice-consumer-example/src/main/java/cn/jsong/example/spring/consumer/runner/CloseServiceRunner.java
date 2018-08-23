@@ -28,16 +28,16 @@ public class CloseServiceRunner implements CommandLineRunner {
      */
     @PreDestroy
     public void waitLastTaskComplete() {
-        LOGGER.info("[程序停止前等待任务处理完成]-请等待[{}]秒钟,程序将自动退出!", (preDestroyTime / 1000));
+        LOGGER.info("[程序停止前等待任务处理完成] >>> 请等待[{}]秒钟,程序将自动退出!", (preDestroyTime / 1000));
         long startTime = System.currentTimeMillis();
         try {
             Thread.sleep(preDestroyTime);
             
         } catch (InterruptedException e) {
-            LOGGER.error("[程序停止前等待任务处理完成]-异常, e:{}", e);
+            LOGGER.error("[程序停止前等待任务处理完成][异常] >>> e:{}", e);
 		}
         long endTime = System.currentTimeMillis();
-        LOGGER.info("[程序停止前等待任务处理完成]-已完成,耗时[{}]ms！", (endTime - startTime));
+        LOGGER.info("[程序停止前等待任务处理完成][已完成] >>> 耗时[{}]ms！", (endTime - startTime));
     }
 	
     @Override

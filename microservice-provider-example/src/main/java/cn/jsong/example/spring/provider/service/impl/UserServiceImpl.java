@@ -114,7 +114,7 @@ public class UserServiceImpl implements IUserService {
 			try {
 				this.userMapper.deleteByPrimaryKey(entity.getId());
 			} catch (Exception e) {
-				LOGGER.error("[删除用户]-异常: id={}, errorMsg={}", entity.getId(), e.getMessage());
+				LOGGER.error("[删除用户][异常] >>> id={}, errorMsg={}", entity.getId(), e.getMessage());
 			}
 		}
 		

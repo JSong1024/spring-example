@@ -52,10 +52,10 @@ public abstract class BaseRestTemplateService {
 		try {
 			result = this.postForObject(url, object, JSONObject.class, getBaseHeader());
 		} catch (Exception e) {
-			LOGGER.error("{}远程请求服务异常 e:{}", discript, e);
+			LOGGER.error("[{}远程请求服务异常] >>> e:{}", discript, e);
 			throw new ExampleException("1010001", "远程请求[" + discript + "]异常");
 		}
-		LOGGER.info("{}远程请求返回数据：{}",discript, result.toJSONString());
+		LOGGER.info("[{}远程请求返回数据] >>> {}",discript, result.toJSONString());
 		String jsonStr = vaildResult(result, discript);
 		return jsonStr;
 	}
@@ -65,7 +65,7 @@ public abstract class BaseRestTemplateService {
 		try {
 			result = this.postForObject(url, object, JSONObject.class, headers);
 		} catch (Exception e) {
-			LOGGER.error("{}远程请求服务异常 e:{}", discript, e);
+			LOGGER.error("[{}远程请求服务异常] >>> e:{}", discript, e);
 			throw new ExampleException("1010001", "远程请求[" + discript + "]异常");
 		}
 		String jsonStr = vaildResult(result, discript);

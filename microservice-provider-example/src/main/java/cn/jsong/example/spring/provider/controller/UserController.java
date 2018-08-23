@@ -40,7 +40,7 @@ public class UserController extends BaseController {
         
         bindingResult(bindingResult, "addUser");
         
-        LOGGER.info("[addUser] interface request params = {}", request.toString());
+        LOGGER.info("[addUser] >>> interface request params = {}", request.toString());
         
         this.userService.addUser(request);
         

@@ -47,7 +47,7 @@ public class UserInfoController extends BaseController {
 		
 		bindingResult(bindingResult, "addUserInfo");
 		
-		LOGGER.info("[添加用户信息接口]-入参: {}", JSON.toJSONString(request));
+		LOGGER.info("[添加用户信息接口][入参] >>> {}", JSON.toJSONString(request));
 
 		this.userInfoSerice.addUser(request);
 

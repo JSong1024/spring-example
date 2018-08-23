@@ -31,7 +31,7 @@ public class DeleteUserTask {
 		try {
 			this.userService.deleteUser(new Date());
 		} catch (Exception e) {
-			LOGGER.error("[定时任务-删除用户信息]-异常: errorMsg={}", e.getMessage());
+			LOGGER.error("[定时任务][删除用户信息][异常] >>> errorMsg={}", e.getMessage());
 		}
 	}
 
