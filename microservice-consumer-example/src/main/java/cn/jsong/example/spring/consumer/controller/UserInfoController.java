@@ -17,6 +17,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 import cn.jsong.example.spring.comm.result.Result;
 import cn.jsong.example.spring.comm.result.ResultUtils;
+import cn.jsong.example.spring.consumer.logger.SysLog;
 import cn.jsong.example.spring.consumer.rest.request.AddUserInfoRequest;
 import cn.jsong.example.spring.consumer.rest.response.ListUserInfoResponse;
 import cn.jsong.example.spring.consumer.service.IUserInfoService;
@@ -37,6 +38,7 @@ public class UserInfoController extends BaseController {
 	@Autowired
 	IUserInfoService userInfoSerice;
 
+	@SysLog("添加用户信息接口")
 	@HystrixCommand(commandKey = "add", groupKey = "addGroup", threadPoolKey = "addThreadPool", fallbackMethod = "addUserInfoFallBack", 
 			commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000"),
 									@HystrixProperty(name = "fallback.isolation.semaphore.maxConcurrentRequests", value = "500") }, 
@@ -61,6 +63,7 @@ public class UserInfoController extends BaseController {
 		return HystrixFallBackUtils.fallBackResult("addUserInfo", e);
 	}
 	
+	@SysLog("查询所有用户信息列表接口")
 	@ApiOperation(value = "查询所有用户信息列表接口")
 	@PostMapping(value = "/info/list")
 	public Result<List<ListUserInfoResponse>> addUserInfo() {
