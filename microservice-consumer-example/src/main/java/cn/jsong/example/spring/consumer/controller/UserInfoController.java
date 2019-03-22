@@ -22,7 +22,9 @@ import cn.jsong.example.spring.consumer.rest.request.AddUserInfoRequest;
 import cn.jsong.example.spring.consumer.rest.response.ListUserInfoResponse;
 import cn.jsong.example.spring.consumer.service.IUserInfoService;
 import cn.jsong.example.spring.consumer.util.HystrixFallBackUtils;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -31,9 +33,11 @@ import io.swagger.annotations.ApiOperation;
  * @author S.J.
  * @date 2018/08/10
  */
+@Slf4j
+@Api(tags = "用户操作服务接口集")
 @RestController
 @RequestMapping(value = "/v1/example/user")
-public class UserInfoController extends BaseController {
+public class UserInfoController {
 
 	@Autowired
 	IUserInfoService userInfoSerice;
@@ -47,9 +51,7 @@ public class UserInfoController extends BaseController {
 	@PostMapping(value = "/info/add")
 	public Result<?> addUserInfo(@Valid @RequestBody AddUserInfoRequest request, BindingResult bindingResult) {
 		
-		bindingResult(bindingResult, "addUserInfo");
-		
-		LOGGER.info("[添加用户信息接口][入参] >>> {}", JSON.toJSONString(request));
+		log.info("[添加用户信息接口][入参] >>> {}", JSON.toJSONString(request));
 
 		this.userInfoSerice.addUser(request);
 
@@ -58,7 +60,6 @@ public class UserInfoController extends BaseController {
 	
 	Result<?> addUserInfoFallBack(@Valid @RequestBody AddUserInfoRequest request,
 			BindingResult bindingResult, Throwable e) {
-		bindingResult(bindingResult, "addUserInfo");
 		
 		return HystrixFallBackUtils.fallBackResult("addUserInfo", e);
 	}

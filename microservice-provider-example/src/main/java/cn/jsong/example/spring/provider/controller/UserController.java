@@ -18,6 +18,7 @@ import cn.jsong.example.spring.provider.rest.request.AddUserRequest;
 import cn.jsong.example.spring.provider.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -26,10 +27,11 @@ import io.swagger.annotations.ApiOperation;
  * @author S.J.
  * @date 2018/08/10
  */
-@Api(description = "用户操作服务接口集")
+@Slf4j
+@Api(tags = "用户操作服务接口集")
 @RestController
 @RequestMapping("/v1/user")
-public class UserController extends BaseController {
+public class UserController {
 	
     @Autowired
     private IUserService userService;
@@ -38,9 +40,7 @@ public class UserController extends BaseController {
     @PostMapping("/add")
     public Result<?> addUser(@Valid @RequestBody AddUserRequest request, BindingResult bindingResult) {
         
-        bindingResult(bindingResult, "addUser");
-        
-        LOGGER.info("[addUser] >>> interface request params = {}", request.toString());
+    		log.info("[addUser] >>> interface request params = {}", request.toString());
         
         this.userService.addUser(request);
         
